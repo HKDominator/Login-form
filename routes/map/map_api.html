@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>Display a map</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+      #map {
+        position: absolute;
+        bottom: 50px;
+        left: 550px;
+        right: 0;
+        width: 500px;
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map">
+      <a
+        href="https://www.maptiler.com"
+        style="position: absolute; left: 10px; bottom: 10px; z-index: 999"
+        ><img
+          src="https://api.maptiler.com/resources/logo.svg"
+          alt="MapTiler logo"
+      /></a>
+    </div>
+    <style>
+      p {
+        position: absolute;
+        bottom: 10px;
+        left: 770px;
+      }
+    </style>
+    <p>
+      <a href="https://www.maptiler.com/copyright/" target="_blank"
+        >&copy; MapTiler</a
+      >
+      <a href="https://www.openstreetmap.org/copyright" target="_blank"
+        >&copy; OpenStreetMap contributors</a
+      >
+    </p>
+    <script>
+      const key = "PBxu5wvKAygkx8SFHqWE";
+      //const map = L.map("map").setView([51.5, -0.09], 10); //starting position // [x,y], zoom
+      const map = L.map("map").setView([44.426767, 26.102538], 10); //starting position // [x,y], zoom
+      L.tileLayer(
+        `https://api.maptiler.com/maps/outdoor-v2/{z}/{x}/{y}@2x.png?key=PBxu5wvKAygkx8SFHqWE`,
+        {
+          //style URL
+          tileSize: 512,
+          zoomOffset: -1,
+          minZoom: 1,
+          attribution:
+            '\u003ca href="https://www.maptiler.com/copyright/" target="_blank"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href="https://www.openstreetmap.org/copyright" target="_blank"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e',
+          crossOrigin: true,
+        }
+      ).addTo(map);
+      //L.control.maptilerGeocoding({ apiKey: key }).addTo(map);
+      var marker = L.marker([44.426767, 26.102538]).addTo(map);
+      var circle = L.circle([51.5, -0.11], {
+        color: "red",
+        fillColor: "#f03",
+        fillOpacity: 0.5,
+        radius: 5100,
+      }).addTo(map);
+      var polygon = L.polygon([
+        [54.3, -0.8],
+        [50.2, 1.9],
+        [51.4, -0.7],
+      ]).addTo(map);
+      marker.bindPopup("<b>Hey there!</b><br>I'm a marker.").openPopup();
+    </script>
+    <input
+      type="text"
+      name="x_coord"
+      placeholder="X"
+      id="x_coord"
+      value="44.426767"
+      required
+    /><br />
+    <input
+      type="text"
+      name="y_coord"
+      placeholder="Y"
+      id="y_coord"
+      value="26.102538"
+      required
+    /><br />
+    <input
+      type="text"
+      name="zoom_value"
+      placeholder="Zoom"
+      id="zoom_value"
+      required
+    /><br />
+    <script>
+      var x_val = document.getElementById("x_coord");
+      var y_val = document.getElementById("y_coord");
+      var zoom_value = document.getElementById("zoom");
+      //const map = L.map('map').setView([Int32Array.x_val,Int32Array.y_val],Int32Array.zoom_value);
+    </script>
+  </body>
+</html>

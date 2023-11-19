@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html>
+  <link href="password_incorrect.css" />
   <head>
-	<title>Example Login Form</title>
+    <title>Example Login Form</title>
   </head>
   <body>
-	<form action="/auth" method="post">
-  	<!-- user input-->
-  	Username:<br>
-  	<input type="text" name="username" placeholder="Username" id="username" required ><br><br>
-  	Password:<br>
-  	<input type="password" name="password" placeholder="Password" id="password" required><br><br>
-  	<!-- submit button -->
-  	<input type="submit" value="login">
-	</form>
+    <form action="/post_login/send" method="post">
+      <!-- user input-->
+      Username:<br />
+      <input
+        type="text"
+        name="username"
+        placeholder="Username"
+        id="username"
+        required
+      /><br /><br />
+      Password:<br />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        id="password"
+        required
+      /><br />
+      <!-- submit button -->
+      <input type="submit" value="login" />
+    </form>
   </body>
 </html>
